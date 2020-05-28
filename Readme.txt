@@ -14,6 +14,8 @@ Adds article to list
 Paramters:
 type: application/json
 Body:
+Serialized Article object
+-or-
 string author - The Author of the article
 string headline - The Headline of the article
 int year - The year of the article
