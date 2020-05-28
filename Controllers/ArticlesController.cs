@@ -22,6 +22,10 @@ namespace ArticleService.Controllers
             _articleStorage = ArticleStorage.GetInstance();
         }
 
+        /// <summary>
+        /// Default GET landing on /Articles
+        /// </summary>
+        /// <returns>The content of Readme.txt</returns>
         [HttpGet]
         [Route("")]
         [Route("Articles")]
@@ -31,6 +35,11 @@ namespace ArticleService.Controllers
             
         }
 
+        /// <summary>
+        /// Return specificed Article
+        /// </summary>
+        /// <param name="id">The ID of the article to return</param>
+        /// <returns>Returns Article or 404 if not found</returns>
         [HttpGet]
         [Route("{id}")]
         public ActionResult<Article> Get(int id)
@@ -43,6 +52,10 @@ namespace ArticleService.Controllers
             return NotFound();
         }
 
+        /// <summary>
+        /// Returns list of all Articles
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("[action]")]
         public ActionResult<IEnumerable<Article>> All()
@@ -50,6 +63,11 @@ namespace ArticleService.Controllers
             return _articleStorage.GetAll().ToArray();
         }
 
+        /// <summary>
+        /// Adds article to list
+        /// </summary>
+        /// <param name="article">The article to add, author, headline, year and text if json</param>
+        /// <returns>200 OK and article ID on success</returns>
         [HttpPost]
         public ActionResult<string> CreateArticle(Article article)
         {
@@ -58,6 +76,11 @@ namespace ArticleService.Controllers
             return "The article was created with index " + index;
         }
 
+        /// <summary>
+        /// Removes an article from the list
+        /// </summary>
+        /// <param name="id">The ID of the article to delete</param>
+        /// <returns>Returns a confirmation on deletion or 404 if not found</returns>
         [HttpDelete]
         [Route("{id}")]
         public ActionResult<string> DeleteArticle(int id)
