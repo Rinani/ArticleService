@@ -7,6 +7,7 @@ namespace ArticleService
 {
     public class Article
     {
+        public int ID { get; set; }
         public string Author { get; set; }
         public string Headline { get; set; }
 
